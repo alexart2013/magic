@@ -1,0 +1,16 @@
+#Maven generated build
+target/
+
+#Intellij IDEA files
+.idea
+*iml
+*ipr
+*iws
+*.ids
+
+#Signed artifacts
+*.asc
+
+#KDE files
+.directory
+
