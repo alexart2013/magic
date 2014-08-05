@@ -1,4 +1,9 @@
-magic
+Abnormal Java Coding
 =====
 
-Abnormal Java coding (Unsafe, reflection, bi-direction native, JVM bytecode generation). This is Just4Fun.
+* Unsafe, 
+* reflection, 
+* bi-direction native, 
+* JVM bytecode generation
+ 
+All of this is Just4Fun.
