@@ -32,11 +32,6 @@ public class Main
         //TODO try to clone runtime
 
         //sizes
-        //FIXME following code crashes JVM
-        /*
-        Object o = new Object();
-        long sizeOfObject = UnsafeOps.sizeOf(o);
-        System.out.println("Size of Object is: "+sizeOfObject);
 
         Integer i = 42;
         long sizeOfInt = UnsafeOps.sizeOf(i);
@@ -46,9 +41,12 @@ public class Main
         long sizeOfLong = UnsafeOps.sizeOf(l);
         System.out.println("Size of Long is: "+sizeOfLong);
 
+        Object o = new Object();
+        long sizeOfObject = UnsafeOps.sizeOf(o);
+        System.out.println("Size of Object is: "+sizeOfObject);
+
         Void v = Reflector.returnVoid();
         long sizeOfVoid = UnsafeOps.sizeOf(v);
         System.out.println("Size of Void is: "+sizeOfVoid);
-        */
     }
 }

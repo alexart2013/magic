@@ -2,7 +2,10 @@ package ws.kyberorg.magic.unsafe;
 
 import sun.misc.Unsafe;
 
+import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.HashSet;
 
 /**
  * Fun with sun.misc.Unsafe class
@@ -41,15 +44,33 @@ public class UnsafeOps {
     }
 
     /**
-     * Object size
+     * Mishadoff's code
      *
-     * @param o target
-     * @return size of target
+     * @param o given object
+     * @return size
      */
-    public static long sizeOf(Object o){
-        if(isNotInited()){ return 0L; }
+    public static long sizeOf(Object o) {
+        HashSet<Field> fields = new HashSet<Field>();
+        Class c = o.getClass();
+        while (c != Object.class) {
+            for (Field f : c.getDeclaredFields()) {
+                if ((f.getModifiers() & Modifier.STATIC) == 0) {
+                    fields.add(f);
+                }
+            }
+            c = c.getSuperclass();
+        }
 
-        return unsafe.getAddress(normalize(unsafe.getInt(o, 4L)) + 12L);
+        // get offset
+        long maxSize = 0;
+        for (Field f : fields) {
+            long offset = unsafe.objectFieldOffset(f);
+            if (offset > maxSize) {
+                maxSize = offset;
+            }
+        }
+
+        return ((maxSize / 8) + 1) * 8;   // padding
     }
 
     /**
