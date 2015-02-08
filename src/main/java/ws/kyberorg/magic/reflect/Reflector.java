@@ -1,5 +1,7 @@
 package ws.kyberorg.magic.reflect;
 
+import ws.kyberorg.magic.LoopObject;
+
 import java.lang.reflect.Constructor;
 
 /**
@@ -13,5 +15,13 @@ public class Reflector {
         constructor.setAccessible(true);
         Void newVoid = constructor.newInstance();
         return newVoid;
+    }
+
+    public static LoopObject initLoopObject() throws Exception{
+        Constructor<LoopObject> constructor;
+        constructor = LoopObject.class.getDeclaredConstructor(new Class[0]);
+        constructor.setAccessible(true);
+        LoopObject loopObject = constructor.newInstance();
+        return loopObject;
     }
 }

@@ -48,5 +48,12 @@ public class Main
         Void v = Reflector.returnVoid();
         long sizeOfVoid = UnsafeOps.sizeOf(v);
         System.out.println("Size of Void is: "+sizeOfVoid);
+
+        /*
+        int loopObjectCounter = LoopObject.getCounter();
+        System.out.println("Counter is: "+loopObjectCounter);
+        Reflector.initLoopObject();
+        System.out.println("And now "+LoopObject.getCounter());
+        */
     }
 }
